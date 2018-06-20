@@ -1,7 +1,7 @@
 import Compute from './compute';
 import WaittingExecut from 'waitting-execut';
 
-class TimerShaft {
+class TimeList {
   constructor(options = {}) {
     this.timeList = [];
     this.eventList = {};
@@ -21,17 +21,9 @@ class TimerShaft {
   on(event) {
     this.setTimeList(Number(event.time));
     if (!this.eventList[Number(event.time)]) {
-      this.eventList[Number(event.time)] = [{
-        callBack: event.callBack,
-        data: event.data,
-        time: event.time,
-      }];
+      this.eventList[Number(event.time)] = [event];
     } else {
-      this.eventList[Number(event.time)].push({
-        callBack: event.callBack,
-        data: event.data,
-        time: event.time,
-      });
+      this.eventList[Number(event.time)].push(event);
     }
 
     if (event.checkPoint) {
@@ -242,4 +234,4 @@ class TimerShaft {
   }
 }
 
-export default TimerShaft;
+export default TimeList;
