@@ -10,5 +10,8 @@
     "time"
   ],
   "author": "https://github.com/fanxiaocheng-284",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "waitting-execut": "^1.0.2"
+  }
 }
