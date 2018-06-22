@@ -74,7 +74,7 @@ class TimeList {
       // }
       return {
         index: eventIndex,
-        list: timeCurrentList.slice(currentIndex, eventIndex - 1),
+        list: timeCurrentList.slice(currentIndex, eventIndex),
       };
     }
     return {
