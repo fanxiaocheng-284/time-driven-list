@@ -85,14 +85,12 @@ class TimeList {
 
   triggerByLimit(time, limit = 0, customRule) {
     // promise未完全执行
-    console.log(this.currentList.length);
     if (this.currentList.length) {
       return;
     }
 
     // 获取当前符合信息队列
     const currentTrigger = this.getTimeIndex(time + limit);
-    console.log('currentTrigger', time, currentTrigger);
     if (this.options.needReplay) {
       this.lastIndex = currentTrigger.index;
     }
@@ -107,11 +105,9 @@ class TimeList {
     if (customRule) {
       resultList = customRule(resultList);
     }
-    console.log('replay resultList', resultList);
     resultList.map((value) => {
       this.triggerByItem(value, time);
     });
-    console.log('replay this.doingList', this.doingList);
     if (this.doingList.length) {
       Promise.all(this.doingList).then(() => {
         if (!this.options.needReplay) {
@@ -124,8 +120,10 @@ class TimeList {
   }
 
   triggerByItem(item, triggerTime) {
+    if (!item) {
+      return;
+    }
     const time = item.time;
-    console.log('replay time', time, triggerTime);
     this.currentList.push({
       time,
       item,
@@ -134,7 +132,6 @@ class TimeList {
       const triggerItem = new WaittingExecut({
         waitTime: time - triggerTime,
         callBack: () => {
-          console.log('replay callBack', item.data);
           item.callBack();
           this.clearTriggerItem(time, item);
           resolve();
@@ -145,8 +142,6 @@ class TimeList {
       } else {
         this.wattingList[time].push(triggerItem);
       }
-    }).then(() => {
-      console.log('replay done', item);
     }).catch((e) => {
       console.warn(e);
     });
@@ -181,8 +176,8 @@ class TimeList {
   }
 
   finishedTrigger(list) {
-    list.map(({ time, value }) => {
-      Compute.removeFromList(this.eventList[time], value);
+    list.map(({ time, item }) => {
+      Compute.removeFromList(this.eventList[time], item);
       if (!this.eventList[time].length) {
         Compute.removeFromList(this.timeList, time);
       }
