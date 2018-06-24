@@ -1,6 +1,6 @@
 {
   "name": "time-driven-list",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A tool for event queues based on time control management",
   "main": "index.js",
   "scripts": {
