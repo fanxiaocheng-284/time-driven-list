@@ -9,17 +9,17 @@
   "keywords": [
     "time"
   ],
-  "author": "https://github.com/fanxiaocheng-284",
+  "author": "https://github.com/jacksirens",
   "license": "ISC",
   "dependencies": {
     "waitting-execut": "^1.0.2"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/fanxiaocheng-284/time-driven-list"
+    "url": "git+https://github.com/jacksirens/time-driven-list"
   },
   "bugs": {
-    "url": "https://github.com/fanxiaocheng-284/time-driven-list/issues"
+    "url": "https://github.com/jacksirens/time-driven-list/issues"
   },
-  "homepage": "https://github.com/fanxiaocheng-284/time-driven-list#readme"
+  "homepage": "https://github.com/jacksirens/time-driven-list#readme"
 }
